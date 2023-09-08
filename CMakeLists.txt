@@ -7,8 +7,9 @@ project(YAGE)
 # Include directory
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-# add the Main executable
+# add the Main executables
 add_executable(
   yage
   "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/platform/detection.cpp"
 )

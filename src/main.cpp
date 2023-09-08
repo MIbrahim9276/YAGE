@@ -7,10 +7,11 @@ LICENSE file in the root directory of this source tree.
 */
 
 #include <platform/detection.hpp>
-#include <iostream>
 
 int main() {
   std::cout << "Hello World" << std::endl;
+
+  std::cout << YAGE::Platform::OS::getOSType() << std::endl;
 
   return 0;
 }

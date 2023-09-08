@@ -10,43 +10,23 @@ LICENSE file in the root directory of this source tree.
 
 // Libraries
 #include <string>
-
+#include <fstream>
+#include <algorithm>
+#include <iostream>
 namespace YAGE {
 
-  // Windows
-    #if defined(_WIN32)
+  namespace Platform {
 
-      // Detect 64-bit vs 32-bit
-      #if defined(_WIN64)
-        #define YAGE_OS_TYPE "WIN64"
-      #else
-        #define YAGE_OS_TYPE "WIN32"
-      #endif
+    class OS {
 
-      // Windows Libraries
-      #include <Windows.h>
+      private:
+        static std::string _type;
 
-      // Detect OS version
-      unsigned long majorVersion;
-      unsigned long minorVersion;
-      unsigned long buildNumber;
-      unsigned long platformId;
-      unsigned long productType
+      public:
+        static std::string getOSType();
 
-      // Get the info
-      GetProductInfo(
-            majorVersion,
-            minorVersion,
-            buildNumber,
-            platformId,
-            productType);
+    };
 
-      // Assign the values to global variables
-      const unsigned long YAGE_OS_VERSION_MAJOR = majorVersion;
-      const unsigned long YAGE_OS_VERSION_MINOR = minorVersion;
-      const unsigned long YAGE_OS_BUILD_NUMBER = buildNumber;
-      const unsigned long YAGE_OS_PLATFORM_ID = platformId;
-      const unsigned long YAGE_OS_PRODUCT_TYPE = productType;
-    #endif
+  }
 
 }
