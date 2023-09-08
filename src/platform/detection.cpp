@@ -20,6 +20,27 @@ std::string YAGE::Platform::OS::_type = "";
     return _type;
   }
 
+#elif __APPLE__
+  #include <TargetConditionals.h>
+
+  #if defined(TARGET_OS_MAC)
+
+    // Return MacOS
+    std::string YAGE::Platform::OS::_type = "MacOS";
+    std::string OS::getOSType() {
+      return _type;
+    }
+
+  #elif TARGET_OS_IPHONE
+
+    // Return IOS
+    std::string YAGE::Platform::OS::_type = "IOS";
+    std::string OS::getOSType() {
+      return _type;
+    }
+
+  #endif
+
 #elif __unix__
 
   // Detect which unix-based system it is
@@ -80,6 +101,7 @@ std::string YAGE::Platform::OS::_type = "";
 
   #elif __sun
 
+    // Return Solaris
     std::string YAGE::Platform::OS::_type = "Solaris";
     std::string OS::getOSType() {
       return _type;
@@ -87,11 +109,28 @@ std::string YAGE::Platform::OS::_type = "";
 
   #elif __hpux
 
+    // Return HP UX
     std::string YAGE::Platform::OS::_type = "HP UX";
     std::string OS::getOSType() {
       return _type;
     }
 
+  #elif __ANDROID__
+  
+    // Return Android
+    std::string YAGE::Platform::OS::_type = "Android";
+    std::string OS::getOSType() {
+      return _type;
+    }
+
   #endif
+
+#else
+
+  // Return Unidentified OS
+  std::string YAGE::Platform::OS::_type = "Unidentified OS";
+  std::string OS::getOSType() {
+    return _type;
+  }
 
 #endif
